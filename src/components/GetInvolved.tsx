@@ -20,7 +20,7 @@ export function GetInvolved() {
           </p>
         </div>
 
-        <div className="mb-12 grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {[discord, instagram].map((channel, i) => (
             <article
               key={channel.title}

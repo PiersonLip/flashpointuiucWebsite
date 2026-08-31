@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 export function Hero() {
   return (
     <section className="relative min-h-screen pt-24">
-      <div className="aperture-ring pointer-events-none absolute -inset-x-12 -top-16 -bottom-20 opacity-60" />
+      <div className="aperture-ring pointer-events-none absolute left-1/2 top-[40%] h-[min(110vmin,56rem)] w-[min(110vmin,56rem)] -translate-x-1/2 -translate-y-1/2 opacity-60" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-orange/10 blur-3xl" />
         <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-sky/10 blur-3xl" />
