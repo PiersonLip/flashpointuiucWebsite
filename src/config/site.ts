@@ -87,15 +87,6 @@ export const siteConfig = {
     },
   },
 
-  verification: {
-    title: "Discord verification",
-    steps: [
-      "Verify your identity with your university email in the #verify channel before accessing the rest of the server.",
-      "This keeps the club safe for students and limits spam from non-university individuals.",
-      "Once you're in, change your server profile name to your real name so we can get to know you.",
-    ],
-  },
-
   board: [
     { role: "President", name: "Colin Dragan", handle: "Prez" },
     { role: "Vice President", name: "Elisha Karottu", handle: "Veep" },

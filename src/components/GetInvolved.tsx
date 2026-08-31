@@ -51,20 +51,6 @@ export function GetInvolved() {
             </article>
           ))}
         </div>
-
-        <div className="rounded-2xl border border-[var(--card-border)] bg-navy/50 p-8">
-          <h3 className="font-display mb-6 text-2xl font-bold text-cream">
-            {siteConfig.verification.title}
-          </h3>
-          <ul className="space-y-4">
-            {siteConfig.verification.steps.map((step) => (
-              <li key={step} className="flex gap-3 text-cream/75">
-                <span className="text-sky">→</span>
-                {step}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );
