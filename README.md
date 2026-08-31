@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashpoint Photography Club — UIUC
 
-## Getting Started
+Official website for Flashpoint Photography Club at the University of Illinois Urbana-Champaign.
 
-First, run the development server:
+**Live site:** [flashpointuiuc.com](https://flashpointuiuc.com)
+
+## Stack
+
+- Next.js 16 (App Router) + TypeScript + Tailwind CSS
+- Docker for VPS deployment
+- Vercel-ready for future migration (connect repo, deploy — no Docker needed)
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker (local)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker compose up --build
+```
 
-## Learn More
+## Content updates
 
-To learn more about Next.js, take a look at the following resources:
+Edit [`src/config/site.ts`](src/config/site.ts) for links, board roster, event descriptions, and membership copy. The membership form stays on Google Forms — update the URL in `siteConfig.links.membershipForm`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## VPS deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Prerequisites:
+- DNS A records for `flashpointuiuc.com` and `www.flashpointuiuc.com` → your VPS IP
+- SSH access to `rack` (or set `REMOTE_HOST`)
 
-## Deploy on Vercel
+First-time domain setup:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+./deploy/setup-domain.sh
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy (build locally, rsync to VPS, restart container on port 3012):
+
+```bash
+./deploy/deploy.sh
+```
+
+The app runs in Docker at `127.0.0.1:3012`, proxied by host nginx.
+
+## Future: Vercel
+
+1. Push repo to GitHub
+2. Import project in Vercel
+3. Deploy — no changes to app code required
+
+## Membership flow
+
+Members must complete the [Google Form membership sign-up](https://docs.google.com/forms/d/e/1FAIpQLScF2Mo-j0TYNX8bjntEP5mUMRL3uu7J3xqFLbezxb7U7FPy0w/viewform) before paying dues. Payment info is in the form.
