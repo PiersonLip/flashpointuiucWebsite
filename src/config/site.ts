@@ -72,23 +72,6 @@ export const siteConfig = {
     },
   ],
 
-  discordRoles: [
-    {
-      name: "Officers",
-      description: "Board members for the club.",
-    },
-    {
-      name: "Flashy Approved",
-      description:
-        "Members who paid dues — full server access and welcome at all events.",
-    },
-    {
-      name: "Verified",
-      description:
-        "People who haven't paid dues yet, or have unrecognizable usernames.",
-    },
-  ],
-
   communication: {
     discord: {
       title: "Discord",

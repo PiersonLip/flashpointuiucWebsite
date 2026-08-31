@@ -52,7 +52,7 @@ export function GetInvolved() {
           ))}
         </div>
 
-        <div className="mb-12 rounded-2xl border border-[var(--card-border)] bg-navy/50 p-8">
+        <div className="rounded-2xl border border-[var(--card-border)] bg-navy/50 p-8">
           <h3 className="font-display mb-6 text-2xl font-bold text-cream">
             {siteConfig.verification.title}
           </h3>
@@ -64,23 +64,6 @@ export function GetInvolved() {
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-8">
-          <h3 className="font-display mb-6 text-2xl font-bold text-cream">
-            Discord roles
-          </h3>
-          <div className="grid gap-4 md:grid-cols-3">
-            {siteConfig.discordRoles.map((role) => (
-              <div
-                key={role.name}
-                className="rounded-xl border border-white/5 bg-white/[0.02] p-5"
-              >
-                <p className="mb-2 font-semibold text-sky">{role.name}</p>
-                <p className="text-sm text-cream/60">{role.description}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
