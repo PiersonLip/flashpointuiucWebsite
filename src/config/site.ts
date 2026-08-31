@@ -83,7 +83,7 @@ export const siteConfig = {
       title: "Instagram",
       badge: "Highlights",
       description:
-        "Weekly highlights and excursion recaps, plus member features. Bulletins and recaps typically post on Sundays.",
+        "Weekly highlights and excursion recaps, plus member features.",
     },
   },
 
