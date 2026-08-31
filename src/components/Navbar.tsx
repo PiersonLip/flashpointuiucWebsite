@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-navy-deep/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="#" className="flex items-center gap-3">
+      <nav className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-4">
+        <Link href="#" className="flex items-center gap-3 justify-self-start">
           <Image
             src="/logo.webp"
             alt="Flashpoint Photography Club"
@@ -18,7 +18,7 @@ export function Navbar() {
           />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center justify-center gap-8 md:flex">
           {siteConfig.nav.map((item) => (
             <a
               key={item.href}
@@ -30,7 +30,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-self-end gap-3">
           <Button
             href={siteConfig.links.discord}
             variant="ghost"

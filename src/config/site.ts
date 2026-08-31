@@ -130,6 +130,7 @@ export const siteConfig = {
   nav: [
     { label: "About", href: "#about" },
     { label: "Events", href: "#events" },
+    { label: "Gallery", href: "#gallery" },
     { label: "Membership", href: "#membership" },
     { label: "Join", href: "#join" },
     { label: "Team", href: "#team" },
