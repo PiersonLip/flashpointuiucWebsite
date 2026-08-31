@@ -57,4 +57,4 @@ The app runs in Docker at `127.0.0.1:3012`, proxied by host nginx.
 
 ## Membership flow
 
-Members must complete the [Google Form membership sign-up](https://docs.google.com/forms/d/e/1FAIpQLScF2Mo-j0TYNX8bjntEP5mUMRL3uu7J3xqFLbezxb7U7FPy0w/viewform) before paying dues. Payment info is in the form.
+Members must complete the [Google Form membership sign-up](https://forms.gle/SEZn9jdcg2dPdndF8) before paying dues. Payment info is in the form.
