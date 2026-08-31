@@ -77,7 +77,7 @@ export const siteConfig = {
       title: "Discord",
       badge: "Main hub",
       description:
-        "Our #1 form of communication. All announcements are posted here. Chat, share photos, sell gear, ask questions, and more. Event announcements go out every Monday.",
+        "Our #1 form of communication. All announcements are posted here. Chat, share photos, sell gear, ask questions, and more.",
     },
     instagram: {
       title: "Instagram",
