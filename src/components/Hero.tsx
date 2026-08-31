@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/Button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden pt-24">
-      <div className="aperture-ring absolute inset-0 opacity-60" />
-      <div className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-orange/10 blur-3xl" />
-      <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-sky/10 blur-3xl" />
+    <section className="relative min-h-screen pt-24">
+      <div className="aperture-ring pointer-events-none absolute -inset-x-12 -top-16 -bottom-20 opacity-60" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-orange/10 blur-3xl" />
+        <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-sky/10 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 py-20 text-center lg:py-32">
         <div className="animate-fade-up mb-8">
