@@ -25,7 +25,20 @@ export function Membership() {
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange/20 text-xs text-orange">
                     ✓
                   </span>
-                  <span className="text-cream/80">{benefit}</span>
+                  <span className="text-cream/80">
+                    {benefit === "Equipment rentals" ? (
+                      <>
+                        <a
+                          href={siteConfig.links.rentals}
+                          className="text-sky underline decoration-sky/40 underline-offset-2 hover:text-orange"
+                        >
+                          Equipment rentals
+                        </a>
+                      </>
+                    ) : (
+                      benefit
+                    )}
+                  </span>
                 </li>
               ))}
             </ul>

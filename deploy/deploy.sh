@@ -9,6 +9,8 @@ cd "$ROOT"
 chmod +x deploy/deploy.sh deploy/remote-finish.sh deploy/setup-domain.sh
 
 echo "Building Next.js standalone..."
+DATABASE_URL="${DATABASE_URL:-postgresql://flashpoint:build@127.0.0.1:5434/flashpoint_rentals}" \
+BETTER_AUTH_SECRET="${BETTER_AUTH_SECRET:-build-time-secret-min-32-characters-long}" \
 npm run build
 
 echo "Preparing remote dirs..."
@@ -21,6 +23,8 @@ if [[ -d public ]]; then
 fi
 
 rsync -az docker-compose.prod.yml "${REMOTE_HOST}:${REMOTE_DIR}/"
+rsync -az drizzle/ "${REMOTE_HOST}:${REMOTE_DIR}/drizzle/"
+rsync -az scripts/ "${REMOTE_HOST}:${REMOTE_DIR}/scripts/"
 rsync -az deploy/ "${REMOTE_HOST}:${REMOTE_DIR}/deploy/"
 
 ssh "$REMOTE_HOST" "chmod +x ${REMOTE_DIR}/deploy/remote-finish.sh && ${REMOTE_DIR}/deploy/remote-finish.sh"

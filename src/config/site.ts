@@ -9,6 +9,7 @@ export const siteConfig = {
 
   links: {
     membershipForm: "https://forms.gle/SEZn9jdcg2dPdndF8",
+    rentals: "https://rentals.flashpointuiuc.com",
     headshotsForm:
       "https://docs.google.com/forms/d/e/1FAIpQLScF2Mo-j0TYNX8bjntEP5mUMRL3uu7J3xqFLbezxb7U7FPy0w/viewform",
     discord: "https://discord.com/invite/WZ2EVgK485",
