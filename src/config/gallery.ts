@@ -8,17 +8,8 @@ export type GalleryPhoto = {
 };
 
 /**
- * Add community photos here. Drop images in public/gallery/ and reference them
- * as `/gallery/your-file.jpg`.
- *
- * Example:
- * {
- *   id: "excursion-fall-2025",
- *   src: "/gallery/excursion-fall-2025.jpg",
- *   alt: "Members shooting at Japan House during an excursion",
- *   photographer: "Alex",
- *   event: "Japan House Excursion",
- * }
+ * @deprecated Gallery photos are managed in the database via /admin.
+ * Kept only for the GalleryPhoto type used by older references.
  */
 export const galleryPhotos: GalleryPhoto[] = [];
 

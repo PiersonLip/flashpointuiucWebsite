@@ -88,18 +88,19 @@ export const siteConfig = {
     },
   },
 
+  /** Seed / fallback roster — live edits happen in /admin (board_members table). */
   board: [
-    { role: "President", name: "Colin Dragan", handle: "Prez" },
-    { role: "Vice President", name: "Elisha Karottu", handle: "Veep" },
-    { role: "Secretary", name: "eirini", handle: "secretary" },
-    { role: "Membership Director", name: "Maryam", handle: "Membership director" },
-    { role: "Treasurer", name: "Annya", handle: "treasurer" },
-    { role: "Event Coordinator", name: "mihir", handle: "event coord" },
-    { role: "Media Director", name: "Eshaan", handle: "Media Director" },
-    { role: "Historian", name: "alexa", handle: "historian" },
-    { role: "Historian", name: "Ashley Xiao", handle: "Historian" },
-    { role: "Technician", name: "Michael", handle: "Technician" },
-    { role: "Advisory", name: "isaac tu", handle: "advisor" },
+    { role: "President", name: "Colin Dragan" },
+    { role: "Vice President", name: "Elisha Karottu" },
+    { role: "Secretary", name: "eirini" },
+    { role: "Membership Director", name: "Maryam" },
+    { role: "Treasurer", name: "Annya" },
+    { role: "Event Coordinator", name: "mihir" },
+    { role: "Media Director", name: "Eshaan" },
+    { role: "Historian", name: "alexa" },
+    { role: "Historian", name: "Ashley Xiao" },
+    { role: "Technician", name: "Michael" },
+    { role: "Advisory", name: "isaac tu" },
   ],
 
   nav: [

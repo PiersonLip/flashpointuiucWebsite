@@ -14,7 +14,7 @@ BETTER_AUTH_SECRET="${BETTER_AUTH_SECRET:-build-time-secret-min-32-characters-lo
 npm run build
 
 echo "Preparing remote dirs..."
-ssh "$REMOTE_HOST" "mkdir -p ${REMOTE_DIR}/app ${REMOTE_DIR}/deploy"
+ssh "$REMOTE_HOST" "mkdir -p ${REMOTE_DIR}/app ${REMOTE_DIR}/deploy ${REMOTE_DIR}/uploads/gallery ${REMOTE_DIR}/uploads/board"
 
 rsync -az --delete .next/standalone/ "${REMOTE_HOST}:${REMOTE_DIR}/app/"
 rsync -az .next/static/ "${REMOTE_HOST}:${REMOTE_DIR}/app/.next/static/"

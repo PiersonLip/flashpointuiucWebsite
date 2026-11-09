@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# admin-uploaded media (local / VPS bind mount)
+/data/uploads/**
+!/data/uploads/**/.gitkeep
+/public/uploads/**
+!/public/uploads/**/.gitkeep
+
 # debug
 npm-debug.log*
 yarn-debug.log*

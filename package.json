@@ -12,6 +12,7 @@
     "db:push": "drizzle-kit push",
     "seed": "tsx scripts/seed-manager.ts",
     "seed:equipment": "tsx scripts/seed-equipment.ts",
+    "seed:site": "tsx scripts/seed-site-content.ts",
     "backup": "tsx scripts/backup-drive.ts"
   },
   "dependencies": {

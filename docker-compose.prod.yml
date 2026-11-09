@@ -5,6 +5,8 @@ services:
     command: node server.js
     volumes:
       - ./app:/app
+      # Persist admin-uploaded gallery/board images across deploys
+      - ./uploads:/app/data/uploads
     ports:
       - "127.0.0.1:3012:3000"
     env_file:
@@ -13,6 +15,7 @@ services:
       NODE_ENV: production
       PORT: 3000
       HOSTNAME: 0.0.0.0
+      UPLOADS_DIR: /app/data/uploads
       DATABASE_URL: postgresql://flashpoint:${POSTGRES_PASSWORD}@db:5432/flashpoint_rentals
     depends_on:
       db:

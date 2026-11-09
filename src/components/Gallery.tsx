@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { galleryConfig, galleryPhotos } from "@/config/gallery";
+import { galleryConfig } from "@/config/gallery";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
+import { getGalleryPhotos } from "@/lib/site-content";
 
 function PlaceholderTile({ index }: { index: number }) {
   const spans = ["col-span-1 row-span-1", "col-span-1 row-span-2", "col-span-1 row-span-1"];
@@ -14,8 +15,9 @@ function PlaceholderTile({ index }: { index: number }) {
   );
 }
 
-export function Gallery() {
-  const hasPhotos = galleryPhotos.length > 0;
+export async function Gallery() {
+  const photos = await getGalleryPhotos();
+  const hasPhotos = photos.length > 0;
 
   return (
     <section id="gallery" className="relative py-24">
@@ -42,7 +44,7 @@ export function Gallery() {
 
         {hasPhotos ? (
           <div className="grid auto-rows-[180px] grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {galleryPhotos.map((photo, index) => (
+            {photos.map((photo, index) => (
               <figure
                 key={photo.id}
                 className={`group relative min-h-[180px] overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--card)] ${
@@ -51,14 +53,15 @@ export function Gallery() {
               >
                 <Image
                   src={photo.src}
-                  alt={photo.alt}
+                  alt={photo.alt || "Community gallery photo"}
                   fill
+                  unoptimized
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/90 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
                   {photo.photographer && (
-                    <p className="text-sm font-medium text-cream">@{photo.photographer}</p>
+                    <p className="text-sm font-medium text-cream">{photo.photographer}</p>
                   )}
                   {photo.event && <p className="text-xs text-muted">{photo.event}</p>}
                   {photo.caption && (

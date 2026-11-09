@@ -18,7 +18,12 @@ export async function SiteNav() {
             <NavLink href="/gear">Gear</NavLink>
             <NavLink href="/my-rentals">My rentals</NavLink>
             <NavLink href="/how-this-works">How this works</NavLink>
-            {user.isManager ? <NavLink href="/manager">Manager</NavLink> : null}
+            {user.isManager ? (
+              <>
+                <NavLink href="/manager">Manager</NavLink>
+                <NavLink href="/admin">Site admin</NavLink>
+              </>
+            ) : null}
             <span className="muted" style={{ fontSize: "0.85rem" }}>
               {user.name}
             </span>

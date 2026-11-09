@@ -9,6 +9,7 @@ const RENTAL_PATHS = [
   "/register",
   "/my-rentals",
   "/manager",
+  "/admin",
   "/how-this-works",
   "/verify-email",
   "/forgot-password",
@@ -66,5 +67,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.webp|gallery).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logo.webp|gallery|uploads).*)"],
 };

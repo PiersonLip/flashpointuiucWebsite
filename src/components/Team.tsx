@@ -1,6 +1,10 @@
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
+import { getBoardMembers } from "@/lib/site-content";
 
-export function Team() {
+export async function Team() {
+  const board = await getBoardMembers();
+
   return (
     <section id="team" className="relative py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -14,18 +18,29 @@ export function Team() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {siteConfig.board.map((member) => (
+          {board.map((member) => (
             <article
-              key={`${member.role}-${member.name}`}
+              key={member.id}
               className="rounded-xl border border-[var(--card-border)] bg-[var(--card)] p-6 transition-colors hover:border-sky/25"
             >
+              {member.imageUrl ? (
+                <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg bg-white/[0.03]">
+                  <Image
+                    src={member.imageUrl}
+                    alt={member.name}
+                    fill
+                    unoptimized
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+              ) : null}
               <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-orange">
                 {member.role}
               </p>
               <h3 className="font-display text-xl font-bold text-cream">
                 {member.name}
               </h3>
-              <p className="mt-1 text-sm text-muted">@{member.handle}</p>
             </article>
           ))}
         </div>

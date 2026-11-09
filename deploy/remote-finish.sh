@@ -85,6 +85,13 @@ docker run --rm --network host \
   -w /scripts \
   node:22-bookworm-slim \
   bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-equipment.ts' || echo "Equipment seed skipped/failed"
+
+docker run --rm --network host \
+  -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
+  -v /var/www/flashpoint/scripts:/scripts \
+  -w /scripts \
+  node:22-bookworm-slim \
+  bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-site-content.ts' || echo "Site content seed skipped/failed"
 set -e
 
 chmod +x deploy/run-overdue-cron.sh

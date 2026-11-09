@@ -32,8 +32,8 @@ export async function requireUser(opts?: { next?: string }) {
   return session;
 }
 
-export async function requireManager() {
-  const session = await requireUser({ next: "/manager" });
+export async function requireManager(opts?: { next?: string }) {
+  const session = await requireUser({ next: opts?.next ?? "/manager" });
   if (!session.user.isManager) {
     redirect("/gear");
   }

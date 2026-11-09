@@ -220,3 +220,27 @@ export const managerPromotions = pgTable("manager_promotions", {
     .references(() => user.id),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
+
+/** Public marketing site — executive board roster */
+export const boardMembers = pgTable("board_members", {
+  id: text("id").primaryKey(),
+  role: text("role").notNull(),
+  name: text("name").notNull(),
+  imageUrl: text("image_url"),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+/** Public marketing site — community gallery */
+export const galleryPhotos = pgTable("gallery_photos", {
+  id: text("id").primaryKey(),
+  src: text("src").notNull(),
+  alt: text("alt").notNull().default(""),
+  photographer: text("photographer"),
+  caption: text("caption"),
+  event: text("event"),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});

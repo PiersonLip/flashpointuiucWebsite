@@ -923,3 +923,45 @@ select.sheet-input {
     width: 100%;
   }
 }
+
+.admin-section {
+  scroll-margin-top: 1rem;
+}
+
+.admin-grid-2 {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.admin-member-head {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.admin-avatar,
+.admin-gallery-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(107, 184, 232, 0.25);
+  background: rgba(0, 26, 58, 0.55);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.admin-gallery-thumb {
+  width: 120px;
+  height: 120px;
+}
+
+.admin-avatar-img,
+.admin-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

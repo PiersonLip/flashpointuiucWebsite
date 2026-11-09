@@ -111,6 +111,7 @@ export default async function ManagerPage() {
         <a href="#waitlists">Waitlists ({waitlist.length})</a>
         <a href="#members">Accounts ({members.length})</a>
         <a href="#inventory">Inventory ({inventory.length})</a>
+        <Link href="/admin">Site admin</Link>
       </nav>
 
       <section id="pending-requests" style={{ marginTop: "2rem" }}>

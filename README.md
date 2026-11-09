@@ -28,7 +28,9 @@ npm run dev
 
 ## Content updates
 
-Edit [`src/config/site.ts`](src/config/site.ts) for links, board roster, event descriptions, and membership copy.
+Edit [`src/config/site.ts`](src/config/site.ts) for links, event descriptions, and membership copy.
+
+**Gallery photos and executive board** (names, roles, portraits) are edited in the site admin dashboard at [rentals.flashpointuiuc.com/admin](https://rentals.flashpointuiuc.com/admin) (manager login). Uploaded images persist in `/var/www/flashpoint/uploads` on the VPS.
 
 Equipment inventory is seeded from [`scripts/seed-equipment.ts`](scripts/seed-equipment.ts). Managers can also add/edit gear in the manager dashboard.
 
