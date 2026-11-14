@@ -13,6 +13,7 @@ import type { AvailabilityRange } from "@/lib/availability";
 export const equipmentCategoryEnum = pgEnum("equipment_category", [
   "digital",
   "film",
+  "lens",
 ]);
 
 export const equipmentStatusEnum = pgEnum("equipment_status", [

@@ -1,6 +1,6 @@
 export type EquipmentSpec = {
   name: string;
-  category: "digital" | "film";
+  category: "digital" | "film" | "lens";
   subcategory: string;
   assetTag: string;
   lensMount: string;

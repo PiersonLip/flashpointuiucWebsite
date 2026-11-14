@@ -21,6 +21,10 @@ export const CATEGORIES = {
     label: "Film cameras",
     subcategories: ["35mm film"],
   },
+  lens: {
+    label: "Lenses",
+    subcategories: ["Nikon F", "Sony A", "Minolta MD"],
+  },
 } as const;
 
 export type EquipmentCategory = keyof typeof CATEGORIES;
