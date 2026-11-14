@@ -1,0 +1,14 @@
+---
+description: After code changes, commit, push, and deploy to the VPS
+alwaysApply: true
+---
+
+# Commit and deploy
+
+After finishing a set of code changes on this project:
+
+1. **Commit** the relevant changes (follow the repo's git commit protocol; only when the work is done, not mid-debug unless the user asks).
+2. **Push** to `origin` on the current branch.
+3. **Deploy** to the VPS with `./deploy/deploy.sh` (uses `REMOTE_HOST=rack` and `REMOTE_DIR=/var/www/flashpoint` by default).
+
+Do this automatically unless the user says not to deploy or not to commit. Keep the VPS in sync with what was just committed—do not deploy uncommitted local-only edits.
