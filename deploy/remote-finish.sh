@@ -67,32 +67,38 @@ for f in $(ls drizzle/*.sql 2>/dev/null | sort); do
   fi
 done
 
-set +e
-docker run --rm --network host \
-  -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
-  -e BOOTSTRAP_MANAGER_EMAIL="$(grep '^BOOTSTRAP_MANAGER_EMAIL=' .env | cut -d= -f2-)" \
-  -e BOOTSTRAP_MANAGER_NAME="$(grep '^BOOTSTRAP_MANAGER_NAME=' .env | cut -d= -f2-)" \
-  -e BOOTSTRAP_MANAGER_NETID="$(grep '^BOOTSTRAP_MANAGER_NETID=' .env | cut -d= -f2-)" \
-  -e BOOTSTRAP_MANAGER_PASSWORD="$(grep '^BOOTSTRAP_MANAGER_PASSWORD=' .env | cut -d= -f2-)" \
-  -v /var/www/flashpoint/scripts:/scripts \
-  -w /scripts \
-  node:22-bookworm-slim \
-  bash -lc 'npm init -y >/dev/null && npm install better-auth postgres tsx bcryptjs >/dev/null 2>&1 && npx tsx seed-manager.ts' || echo "Manager seed skipped/failed"
+# Optional one-shot seeds (npm install inside docker can wedge SSH on the VPS).
+# Re-run with: RUN_SEEDS=1 ./deploy/remote-finish.sh
+if [[ "${RUN_SEEDS:-0}" == "1" ]]; then
+  set +e
+  timeout 180 docker run --rm --network host \
+    -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
+    -e BOOTSTRAP_MANAGER_EMAIL="$(grep '^BOOTSTRAP_MANAGER_EMAIL=' .env | cut -d= -f2-)" \
+    -e BOOTSTRAP_MANAGER_NAME="$(grep '^BOOTSTRAP_MANAGER_NAME=' .env | cut -d= -f2-)" \
+    -e BOOTSTRAP_MANAGER_NETID="$(grep '^BOOTSTRAP_MANAGER_NETID=' .env | cut -d= -f2-)" \
+    -e BOOTSTRAP_MANAGER_PASSWORD="$(grep '^BOOTSTRAP_MANAGER_PASSWORD=' .env | cut -d= -f2-)" \
+    -v /var/www/flashpoint/scripts:/scripts \
+    -w /scripts \
+    node:22-bookworm-slim \
+    bash -lc 'npm init -y >/dev/null && npm install better-auth postgres tsx bcryptjs >/dev/null 2>&1 && npx tsx seed-manager.ts' || echo "Manager seed skipped/failed"
 
-docker run --rm --network host \
-  -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
-  -v /var/www/flashpoint/scripts:/scripts \
-  -w /scripts \
-  node:22-bookworm-slim \
-  bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-equipment.ts' || echo "Equipment seed skipped/failed"
+  timeout 180 docker run --rm --network host \
+    -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
+    -v /var/www/flashpoint/scripts:/scripts \
+    -w /scripts \
+    node:22-bookworm-slim \
+    bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-equipment.ts' || echo "Equipment seed skipped/failed"
 
-docker run --rm --network host \
-  -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
-  -v /var/www/flashpoint/scripts:/scripts \
-  -w /scripts \
-  node:22-bookworm-slim \
-  bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-site-content.ts' || echo "Site content seed skipped/failed"
-set -e
+  timeout 180 docker run --rm --network host \
+    -e DATABASE_URL="$(grep '^DATABASE_URL=' .env | cut -d= -f2-)" \
+    -v /var/www/flashpoint/scripts:/scripts \
+    -w /scripts \
+    node:22-bookworm-slim \
+    bash -lc 'npm init -y >/dev/null && npm install postgres tsx >/dev/null 2>&1 && npx tsx seed-site-content.ts' || echo "Site content seed skipped/failed"
+  set -e
+else
+  echo "Skipping seeds (set RUN_SEEDS=1 to run)"
+fi
 
 chmod +x deploy/run-overdue-cron.sh
 printf '%s\n' \
