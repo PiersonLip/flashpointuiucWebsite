@@ -32,6 +32,13 @@ export function Navbar() {
 
         <div className="flex items-center justify-self-end gap-3">
           <Button
+            href={siteConfig.links.rentals}
+            variant="ghost"
+            className="hidden sm:inline-flex px-4 py-2"
+          >
+            Rentals
+          </Button>
+          <Button
             href={siteConfig.links.discord}
             variant="ghost"
             external

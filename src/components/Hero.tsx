@@ -40,6 +40,9 @@ export function Hero() {
           <Button href={siteConfig.links.membershipForm} external>
             Join the Club
           </Button>
+          <Button href={siteConfig.links.rentals} variant="secondary">
+            Rent Gear
+          </Button>
           <Button href={siteConfig.links.discord} variant="secondary" external>
             Join Discord
           </Button>
