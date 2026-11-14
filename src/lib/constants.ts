@@ -25,6 +25,10 @@ export const CATEGORIES = {
     label: "Lenses",
     subcategories: ["Nikon F", "Sony A", "Minolta MD"],
   },
+  equipment: {
+    label: "Equipment",
+    subcategories: ["Accessories", "Lighting", "Support"],
+  },
 } as const;
 
 export type EquipmentCategory = keyof typeof CATEGORIES;

@@ -75,7 +75,7 @@ export default async function GearPage() {
         Browse camera inventory
       </h1>
       <p className="muted rise rise-delay-1">
-        Request available camera bodies, lenses, and kits from the club inventory.
+        Request available camera bodies, lenses, and other gear from the club inventory.
       </p>
       {overdue ? (
         <p className="error rise rise-delay-2" style={{ marginTop: "1rem" }}>

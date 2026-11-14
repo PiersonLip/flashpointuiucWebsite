@@ -14,6 +14,7 @@ export const equipmentCategoryEnum = pgEnum("equipment_category", [
   "digital",
   "film",
   "lens",
+  "equipment",
 ]);
 
 export const equipmentStatusEnum = pgEnum("equipment_status", [
