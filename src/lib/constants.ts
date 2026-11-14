@@ -15,7 +15,7 @@ export function normalizeEmail(email: string) {
 export const CATEGORIES = {
   digital: {
     label: "Digital bodies",
-    subcategories: ["APS-C"],
+    subcategories: ["APS-C", "Full frame"],
   },
   film: {
     label: "Film cameras",
